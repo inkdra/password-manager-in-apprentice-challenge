@@ -2,11 +2,27 @@
   
 echo "パスワードマネージャーへようこそ！"
 
-read -p "サービス名を入力してください:" serviceName
-read -p "ユーザー名を入力してください:" userName
-read -p "パスワードを入力してください:" password
+read -p "次の選択肢から入力してください(Add Password/Get Password/Exit)：" option
 
-echo "Thank you!"
+while [ $option != Exit ]
+do 
+if [ $option = Add Password ]; then 
+   read -p "サービス名を入力してください:" serviceName
+   read -p "ユーザー名を入力してください:" userName
+   read -p "パスワードを入力してください:" password
+   
+   echo " $serviceName : $userName : $password " >> passwordLibrary.txt
+   echo "パスワードの追加は成功しました。"  
+   read -p "次の選択肢から入力してください(Add Password/Get Password/Exit)：" option
 
-echo " $serviceName : $userName : $password " >> passwordLibrary.txt   
+elif [ $option = Get Password ]; then
+   read -p "サービス名を入力してください:" serviceName
+   if grep -q $serviceName passwordLibrary.txt; then
+      echo grep $serviceName passwordLibrary.txt
+   else
+      echo "そのサービスは登録されていません。"
+   fi
+   read -p "次の選択肢から入力してください(Add Password/Get Password/Exit)：" option
+fi
+done  
  
