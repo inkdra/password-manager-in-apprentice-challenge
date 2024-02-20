@@ -15,8 +15,8 @@ if [[ $option = "Add Password" ]]; then
 
 elif [[ $option = "Get Password" ]]; then
    read -p "サービス名を入力してください:" serviceName
-   if grep -q $serviceName passwordLibrary.txt; then
-      echo grep $serviceName passwordLibrary.txt
+   if grep "$serviceName" passwordLibrary.txt; then
+      echo
    else
       echo "そのサービスは登録されていません。"
    fi
