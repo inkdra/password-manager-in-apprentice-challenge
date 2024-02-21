@@ -22,7 +22,9 @@ elif [[ $option = "Get Password" ]]; then
    fi
 elif [[ $option = "Exit" ]]; then
    echo "Thank you!"
-   break  
+   break
+else 
+   echo "入力が間違えています。Add Password/Get Password/Exit から入力してください。"
 fi
 done  
  
